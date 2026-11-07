@@ -1,53 +1,49 @@
-# 2048-in-react
-
-[![Open issues][issues-badge]][issues-url]
-[![CI][lint-badge]][lint-url]
-[![CI][test-badge]][test-url]
-[![TypeScript][typescript-badge]][typescript-url]
-
-This is a fully functional clone of the popular 2048 game, built using React and Next.js. Not only does it offer smooth animations and works on mobile devices, but it's also a fantastic learning resource for developers. Whether you're here to play, contribute, or learn, this project has something for everyone.
-
-If you're interested in mastering React by building this game step-by-step, check out the course linked below!
-
-[![](.docs/demo.gif)](https://mateuszsokola.github.io/2048-in-react/)
-
-## [Play 2048 💥](https://mateuszsokola.github.io/2048-in-react/)
-
-## Features
-
-- Fully-functional 2048 clone
-- Animations
-- Supports **keyboard** and **touch** events
-
-## Development
-
-_Easily set up a local development environment!_
-
 Just start dev server on [localhost](http://localhost:3000):
 
 - clone
 - `npm install`
 - `npm run dev`
 
-**Start coding!** 🎉
+# Project Structure
 
-## Build your own 2048 Game! 🚀
+pages/index.tsx = main page where the game is show, with the title score board and other text
 
-Want to learn how to build this game from scratch using React & Next.js? I've got you covered! This project is part of an online course where I guide you through the entire process, step-by-step.
+educers/game-reducer.ts = The game logic, moving and merging tiles, updating the score
 
-Whether you're a beginner looking to enhance your skills or an experienced developer seeking a fun project, this course will take you through the core concepts of React while building a fully functional game.
+constants.ts = Settings, board size (4×4), animation timing, winning tile combination (orignally at 2048)
 
-[Build 2048 Game in React](https://www.udemy.com/course/2048-in-react-and-nextjs/?referralCode=AC3FD6336BAB9C402106)
+# React Component
 
-## Support
+components/board.tsx: draws the 4×4 grid and the tiles, and turns keyboard arrows and swipes into moves
+components/tile.tsx or components/score.tsx: one tile, or the score box
 
-If you encounter any issues or have suggestions, feel free to open an issue. Your feedback is always appreciated!
+# Code Analysis
 
-[lint-badge]: https://github.com/mateuszsokola/2048-in-react/actions/workflows/lint.yml/badge.svg
-[lint-url]: https://github.com/mateuszsokola/2048-in-react/actions/workflows/actions/workflows/lint.yml
-[test-badge]: https://github.com/mateuszsokola/2048-in-react/actions/workflows/test.yml/badge.svg
-[test-url]: https://github.com/mateuszsokola/2048-in-react/actions/workflows/test.yml
-[issues-badge]: https://img.shields.io/github/issues/mateuszsokola/2048-in-react
-[issues-url]: https://github.com/mateuszsokola/2048-in-react/issues
-[typescript-badge]: https://badges.frapsoft.com/typescript/code/typescript.svg?v=101
-[typescript-url]: https://github.com/microsoft/TypeScript
+```tsx
+const handleKeyDown = useCallback(
+  (e: KeyboardEvent) => {
+    // disables page scrolling with keyboard arrows
+    e.preventDefault();
+
+    switch (e.code) {
+      case "ArrowUp":
+        moveTiles("move_up");
+        break;
+      case "ArrowDown":
+        moveTiles("move_down");
+        break;
+      case "ArrowLeft":
+        moveTiles("move_left");
+        break;
+      case "ArrowRight":
+        moveTiles("move_right");
+        break;
+    }
+  },
+  [moveTiles],
+);
+```
+
+prevent default stops the normal action of arrow keys being used for scrolling. e is a keyboard event so all keyboard default events are not working now (like spacebar scrolling)
+
+then a swtich statement that matches each key to a matching action which is defined in GameContext,
