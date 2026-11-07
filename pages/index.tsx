@@ -24,24 +24,16 @@ export default function Home() {
         <link rel="icon" type="image/png" sizes="16x16" href="favicon16.png" />
       </Head>
       <header>
-        <h1>2048</h1>
+        <h1>2048 but done differently</h1>
         <Score />
       </header>
       <main>
         <Board />
       </main>
       <div>
-        <h2>🚀 Create your own game</h2>
+        <h2>🚀 Edited by 22300778</h2>
         <p>
-          Join my{" "}
-          <a
-            href="https://www.udemy.com/course/2048-in-react-and-nextjs/?referralCode=AC3FD6336BAB9C402106"
-            target="_blank"
-            rel="noopener"
-          >
-            Udemy course
-          </a>{" "}
-          and learn how to create the 2048 game from scratch.
+          2048!
         </p>
       </div>
       <footer>
