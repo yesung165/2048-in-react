@@ -17,4 +17,4 @@ export const moveAnimationDuration = 200; // ms
 /**
  * Game setup
  */
-export const gameWinTileValue = 2048;
+export const gameWinTileValue = 1024;

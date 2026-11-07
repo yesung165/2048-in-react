@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className={styles.twenty48}>
       <Head>
-        <title>Play 2048</title>
+        <title>Play 1024!</title>
         <meta
           name="description"
           content="Fully-functional 2048 game built in NextJS and TypeScript. Including animations."
