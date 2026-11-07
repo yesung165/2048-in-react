@@ -32,9 +32,7 @@ export default function Home() {
       </main>
       <div>
         <h2>🚀 Edited by 22300778</h2>
-        <p>
-          2048!
-        </p>
+        <p>2048!</p>
       </div>
       <footer>
         <div className={styles.socials}>
